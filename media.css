@@ -1,0 +1,8 @@
+@media screen and (max-width: 420px), screen and (max-height: 420px) {
+    .sun {
+        width: 200px;
+        height: 200px;
+        left: calc(50% - 100px);
+        top: calc(50% - 100px);
+    }
+}
