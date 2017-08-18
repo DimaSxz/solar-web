@@ -1,9 +1,17 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
+}
+
+footer,
+nav,
+header,
+section,
+aside {
+    display: block
 }
 
 section {
@@ -30,13 +38,14 @@ section {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff00', endColorstr='#ff7500', GradientType=1);
     box-shadow: 0px 0px 20px 25px rgba(250, 189, 80, 0.5), 0px 0px 40px 50px rgba(250, 189, 80, 0.3), 0px 0px 60px 75px rgba(250, 189, 80, 0.1);
     box-sizing: border-box;
-/*    opacity: .85;*/
+    /*    opacity: .85;*/
     z-index: 1;
     overflow: hidden;
 }
 
 .main {
-    background-color: #000;
+    /*    background-color: #000;*/
+    background: url(images/blue-pxbg.jpg);
 }
 
 .services {
@@ -59,10 +68,10 @@ section {
 .navbar {
     position: fixed;
     height: 100%;
-    width: 100%;    
+    width: 100%;
     top: 0;
     left: 0;
-    background: rgba(0,0,0,.7);
+    background: rgba(0, 0, 0, .7);
     z-index: 999;
     display: table;
     text-align: center;
