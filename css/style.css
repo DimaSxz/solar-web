@@ -1,3 +1,13 @@
+@font-face {
+    font-family: "Schlange";
+    src: url("../fonts/ALSSchlange/alsschlangeregular.otf");
+}
+
+@font-face {
+    font-family: "Schlange Bold";
+    src: url("../fonts/ALSSchlange/alsschlangebold.otf");
+}
+
 * {
     box-sizing: border-box;
 }
@@ -68,14 +78,70 @@ nav > a {
     background-color: #fff;
 }
 
-.navbar {
+.header {
     position: fixed;
-    height: 100%;
-    width: 100%;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, .7);
-    z-index: 999;
-    display: table;
-    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    z-index: 99;
+}
+
+.header__menu {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1.5rem 0;
+}
+
+.header__menu__link {
+    font-family: "Raleway", sans-serif;
+    color: white;
+    text-transform: uppercase;
+    -webkit-transition: color 0.3s ease 0s;
+    -moz-transition: color 0.3s ease 0s;
+    -ms-transition: color 0.3s ease 0s;
+    -o-transition: color 0.3s ease 0s;
+    transition: color 0.3s ease 0s;
+}
+
+.header__menu__link:not(.header__menu__special):hover {
+    color: #ffb400;
+    -webkit-transition: color 0.3s ease 0s;
+    -moz-transition: color 0.3s ease 0s;
+    -ms-transition: color 0.3s ease 0s;
+    -o-transition: color 0.3s ease 0s;
+    transition: color 0.3s ease 0s;
+}
+
+.header__menu__panel {
+    border: 0.1vw solid #3960df;
+    border-radius: 2.5%;
+    background-color: #3960df;
+    padding: 0.6vw;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -ms-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+
+.header__menu__panel:hover {
+    border-color: #4441d6;
+    background-color: #4441d6;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -ms-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+}
+
+.header__menu__phone {
+    font-family: "Schlange Bold", sans-serif;
+    font-size: 1.5vw;
+    margin-left: 2vw;
 }
