@@ -143,5 +143,5 @@ nav > a {
 .header__menu__phone {
     font-family: "Schlange Bold", sans-serif;
     font-size: 1.5vw;
-    margin-left: 2vw;
+    margin: 0 2vw;
 }
