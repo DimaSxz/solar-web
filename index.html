@@ -123,11 +123,26 @@
 		</aside>
 	</noindex>
 	<footer role="contentinfo">
-		<section class>
+		<section class="footer">
+			<div class="footer__planet"></div>
 			<address>Email: <a href="mailto:tech@solar-web.ru">tech@solar-web.ru</a></address>
 			<small>&copy; Solar-Web, 2017. Все права защищены.</small>
 		</section>
 	</footer>
+	
+	<script>
+		
+		timer = 1000;
+		function viewBlock() {
+			var element = $('div.footer__planet');
+			if (element.length) {
+				alert("Успех");
+			} else {
+				setTimeout(element, timer);
+			}
+		}
+		
+	</script>>
 </body>
 
 </html>
