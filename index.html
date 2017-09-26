@@ -124,25 +124,119 @@
 	</noindex>
 	<footer role="contentinfo">
 		<section class="footer">
-			<div class="footer__planet"></div>
-			<address>Email: <a href="mailto:tech@solar-web.ru">tech@solar-web.ru</a></address>
-			<small>&copy; Solar-Web, 2017. Все права защищены.</small>
+				<div class="footer__planet"></div>
+			<div class="footer__planet_illuminated"></div>
+				<address>Email: <a href="mailto:tech@solar-web.ru">tech@solar-web.ru</a></address>
+				<small>&copy; Solar-Web, 2017. Все права защищены.</small>
 		</section>
 	</footer>
-	
-	<script>
-		
-		timer = 1000;
-		function viewBlock() {
-			var element = $('div.footer__planet');
-			if (element.length) {
-				alert("Успех");
-			} else {
-				setTimeout(element, timer);
+		<script type="text/javascript">
+			
+			var sunFlag = false;
+			
+			var height = document.getElementsByTagName('section')[1].clientHeight;
+			
+			var flag = 0;
+			var tmp;
+			var test;
+			
+			window.onresize = function(e) {
+				height = document.getElementsByTagName('section')[1].clientHeight;
+//				отскролить на начало текущей секции
 			}
-		}
-		
-	</script>>
+			
+			if (window.addEventListener) {
+			  if ('onwheel' in document) {
+				// IE9+, FF17+, Ch31+
+				window.addEventListener("wheel", onWheel);
+			  } else if ('onmousewheel' in document) {
+				// устаревший вариант события
+				window.addEventListener("mousewheel", onWheel);
+			  } else {
+				// Firefox < 17
+				window.addEventListener("MozMousePixelScroll", onWheel);
+			  }
+			} else { // IE8-
+			  window.attachEvent("onmousewheel", onWheel);
+			}
+			
+			function onWheel(e) {
+//				Отлавливать и отменять скролл на первой и последней секциях при соответвсующем скролле
+//				Плавный переход по якорям
+//				Попробовать переписать анимацию на css
+				e = e || window.event;
+				var delta = e.deltaY || e.detail || e.wheelDelta;
+				e.preventDefault ? e.preventDefault() : (e.returnValue = false);
+				if(delta > 0) {
+					if (flag == 0) {
+						tmp = document.body.scrollTop + height;
+						var timer = setInterval(function() {
+							if (document.body.scrollTop >= tmp) {
+								clearInterval(timer);
+							} else {
+								document.body.scrollTop += 7;
+								if (document.body.scrollTop > height ) {
+									test = document.body.scrollTop - height;
+									document.body.scrollTop + test;
+								}
+							}
+						}, 10);
+						flag++;
+						setTimeout(function() {
+							flag = 0;
+						}, 2000);
+					}
+				}
+				else {
+					if (flag == 0) {
+						tmp = document.body.scrollTop - height;
+						var timer = setInterval(function() {
+							if (document.body.scrollTop <= tmp) {
+								clearInterval(timer);
+							} else {
+								document.body.scrollTop -= 7;
+								if (document.body.scrollTop < height ) {
+									test = document.body.scrollTop + height;
+									document.body.scrollTop - test;
+								}
+							}
+						}, 10);
+						flag++;
+						setTimeout(function() {
+							flag = 0;
+						}, 2000);
+					}
+				} 
+				
+				
+				var heightWindow = document.getElementsByTagName('section')[5].offsetTop;
+
+				var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+				
+				var sun = document.querySelector('.sun');
+				var planet = document.querySelector('.footer__planet_illuminated');
+				
+				if (heightWindow == scrolled && !sunFlag) {
+					sun.style.animationDirection = 'normal';
+					sun.style.animationName = 'sunAnimation';
+					planet.style.animationDirection = 'normal';
+					planet.style.animationName = 'planetAnimation';
+					
+					sunFlag = true;
+				}
+				if(scrolled < heightWindow && sunFlag) {
+					
+					sun.style.animationName = 'sunAnimationRevers';
+					planet.style.animationName = 'planetAnimationRevers';
+
+					sunFlag = false;
+				}
+				
+				
+				
+			}
+			
+		</script>
 </body>
 
 </html>
